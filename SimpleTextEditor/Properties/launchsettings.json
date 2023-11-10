@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "SimpleTextEditor (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "SimpleTextEditor (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}

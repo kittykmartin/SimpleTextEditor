@@ -16,8 +16,7 @@ public sealed partial class MainWindow : WindowEx
     private Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
 
     private UISettings settings;
-    private ItemsRepeaterLogBroker _logBroker;
-
+ 
     public MainWindow()
     {
         InitializeComponent();
@@ -31,6 +30,9 @@ public sealed partial class MainWindow : WindowEx
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         settings = new UISettings();
         settings.ColorValuesChanged += Settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event
+         // trying to configure serilog 
+
+   
     }
 
     // this handles updating the caption button colors correctly when indows system theme is changed

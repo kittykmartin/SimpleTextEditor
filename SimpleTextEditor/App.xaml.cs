@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 
+using Serilog;
+
 using SimpleTextEditor.Activation;
 using SimpleTextEditor.Contracts.Services;
 using SimpleTextEditor.Core.Contracts.Services;
@@ -26,6 +28,11 @@ public partial class App : Application
     public IHost Host
     {
         get;
+    }
+
+    public static ILogger Logger
+    {
+        get; set;
     }
 
     public static T GetService<T>()
@@ -70,6 +77,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<logViewModel>();
+            services.AddTransient<logPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<MainViewModel>();
@@ -89,8 +98,10 @@ public partial class App : Application
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
+        e.Handled = true;
         // TODO: Log and handle exceptions as appropriate.
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        App.Logger.Error(e.Exception, "an Error has occured ");
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)

@@ -128,4 +128,11 @@
   &lt;/actions&gt;
 &lt;/toast&gt;</value>
   </data>
+  <data name="ShellMenuItem_Views_log.Text" xml:space="preserve">
+    <value>log</value>
+  </data>
+  <data name="log_Title.Text" xml:space="preserve">
+    <value>log</value>
+    <comment>Page title for logPage</comment>
+  </data>
 </root>
